@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opções do jogo</title>
+
+    <link rel="stylesheet" href="css/style-form.css" />
+  </head>
+  <body>
+    <div class="configuration">
+      <h1>Flappy Bird</h1>
+      <h2>Configurações do jogo</h2>
+      <div class="options">
+        <form method="get" action="./index.html" class="form-flappy">
+          <label for="name">Nome:</label>
+          <input type="text" name="name" placeholder="" />
+
+          <label for="cenario">Cenário do jogo</label>
+          <select name="color" class="option-color">
+            <option id="cenary" value="night">Noturno</option>
+            <option id="cenary" value="day">Diurno</option>
+          </select>
+
+          <label for="intervalo">Intervalo de abertura dos canos:</label>
+          <select name="intervalo" id="option-intervalo">
+            <option value="450">Fácil</option>
+            <option value="300">Médio</option>
+            <option value="200">Difícil</option>
+          </select>
+
+          <label for="distancia">Distância entre os canos</label>
+          <select name="distancia" id="option-distancia">
+            <option value="600">Fácil</option>
+            <option value="450">Médio</option>
+            <option value="250">Difícil</option>
+          </select>
+
+          <label for="velocidade">Velocidade do jogo:</label>
+          <input
+            type="number"
+            name="velocidade-jogo"
+            value="6"
+            min="0"
+            max="20"
+            step="3"
+          />
+
+          <label for="personagens">Personagem:</label>
+          <select name="personagens" id="personagens">
+            <option value="flappy">Flappy Bird</option>
+            <option value="delorean">DeLorean</option>
+            <option value="pikachu">Pikachu</option>
+          </select>
+
+          <label for="tipo-jogo">Tipo de jogo:</label>
+          <select name="tipo-jogo" id="tipo-jogo">
+            <option value="treino">Treino</option>
+            <option value="real">Real</option>
+          </select>
+
+          <label for="velocidade-personagem">Velocidade do Personagem:</label>
+          <select name="vel-personagem" id="velocidade-personagem">
+            <option value="3">Baixa</option>
+            <option value="8">Média</option>
+            <option value="12">Alta</option>
+          </select>
+
+          <label for="pontuacao">Pontuação:</label>
+          <select name="pontuacao" id="pontuacao">
+            <option value="1">1</option>
+            <option value="10">10</option>
+            <option value="100">100</option>
+          </select>
+          <input
+            type="submit"
+            value="Iniciar jogo"
+            class="iniciar"
+            onclick="init()"
+          />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

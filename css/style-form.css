@@ -1,0 +1,57 @@
+@font-face {
+  font-family: PressStart2P;
+  src: url("../fontes/PressStart2P-vaV7.ttf");
+}
+
+body {
+  font-family: "PressStart2P";
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(https://media0.giphy.com/media/euuaA2cwLEUuI/giphy.gif?cid=790b7611c73b448badc9d2640ccd581d9b6724d7d959db44&rid=giphy.gif&ct=g);
+  background-repeat: no-repeat;
+  background-size: 60vw 100vh;
+  background-position: center;
+  background-color: #000;
+}
+
+h1 {
+  align-self: center;
+}
+
+.options {
+  height: 100%;
+}
+
+.configuration {
+  height: 70%;
+  background: #fff;
+  opacity: 0.8;
+  border-radius: 8px;
+  padding: 3%;
+}
+
+.configuration,
+.form-flappy {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-flappy {
+  height: 100%;
+  justify-content: space-around;
+}
+
+.iniciar {
+  width: 50%;
+  align-self: center;
+  height: 2rem;
+  background: #000;
+  color: #fff;
+  font-family: "PressStart2P";
+  border-radius: 8px;
+  margin: 3% 0 0 0;
+  cursor: pointer;
+}
