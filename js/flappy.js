@@ -109,7 +109,7 @@ function Passaro(alturaJogo) {
     } else if (personagens === 'pikachu') {
         this.elemento.src = 'img/pikachu.png'
     } else {
-        this.elemento.src = 'img/pikachu.png'
+        this.elemento.src = 'img/passaro.png'
     }
 
     this.getY = () => parseInt(this.elemento.style.bottom.split('px')[0])
@@ -157,7 +157,6 @@ function Name() {
 
     this.elemento = novoElemento('span', 'progresso')
     this.atualizarPontos = pontos => {
-        this.elemento.innerHTML = nome
         this.elemento.innerHTML = pontos
     }
     this.atualizarPontos(0)
@@ -182,22 +181,9 @@ barreiras.pares.forEach( par => areaDoJogo.appendChild(par.elemento))  */
     return horizontal && vertical
 }
 
-function colidiu(passaro, barreiras) {
-    let colidiu = false
 
-    barreiras.pares.forEach(parDeBarreiras => {
-        if (!colidiu) {
-            const superior = parDeBarreiras.superior.elemento
-            const inferior = parDeBarreiras.inferior.elemento
-            colidiu = estaoSobrepostos(passaro.elemento, superior)
-                || estaoSobrepostos(passaro.elemento, inferior)
-        }
-    })
-    return colidiu
 
-}
-
- function FlappyBird(
+function FlappyBird(
     nome,
     color,
     intervalo,
@@ -207,14 +193,14 @@ function colidiu(passaro, barreiras) {
     tipoJogo,
     velPersonagem,
     pontuacao
- ) {
+) {
     let pontos = 0
     const areaDoJogo = document.querySelector('[wm-flappy]')
 
     if (color === 'night') {
         areaDoJogo.style.backgroundColor = '#10111e';
     } else {
-        areaDoJogo.style.backgroundColor = '#07017e';
+        areaDoJogo.style.backgroundColor = 'deepskyblue';
     }
 
     const altura = areaDoJogo.clientHeight
@@ -230,6 +216,33 @@ function colidiu(passaro, barreiras) {
     areaDoJogo.appendChild(passaro.elemento)
     barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
 
+    function colidiu(passaro, barreiras) {
+        let colidiu = false
+
+        if(tipoJogo === 'real'){
+            barreiras.pares.forEach(parDeBarreiras => {
+                if (!colidiu) {
+                    const superior = parDeBarreiras.superior.elemento
+                    const inferior = parDeBarreiras.inferior.elemento
+                    colidiu = estaoSobrepostos(passaro.elemento, superior) || estaoSobrepostos(passaro.elemento, inferior)
+                } else {
+                    const gameOver = document.querySelector('[gameOver]');
+                    const playerScore = document.querySelector('[score]')
+                    gameOver.style.display = 'flex'
+                    playerScore.innerText = `${nome}, você ganhou um total de ${pontos} pontos.`
+                }
+            })
+        } else {
+            if (colidiu) {
+                    const superior = parDeBarreiras.superior.elemento
+                    const inferior = parDeBarreiras.inferior.elemento
+                    colidiu = estaoSobrepostos(passaro.elemento, superior) || estaoSobrepostos(passaro.elemento, inferior)
+                }
+        }
+        return colidiu
+    }
+
+
     this.start = () => {
         const temporizador = setInterval(() => {
             barreiras.animar()
@@ -243,12 +256,12 @@ function colidiu(passaro, barreiras) {
 }
  new FlappyBird(
     nome,
-color,
-intervalo,
-distancia,
-velJogo,
-personagens,
-tipoJogo,
-velPersonagem,
-pontuacao
+    color,
+    intervalo,
+    distancia,
+    velJogo,
+    personagens,
+    tipoJogo,
+    velPersonagem,
+    pontuacao
  ).start() 

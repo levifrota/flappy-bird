@@ -36,6 +36,37 @@ body {
   overflow: hidden;
 }
 
+[gameOver] {
+  z-index: 1000;
+  top: 20%;
+  position: absolute;
+  left: 30%;
+  width: 40%;
+  /* background: #f00; */
+  height: 40%;
+  padding: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+[gameOver] img {
+  width: 70%;
+}
+
+[score] {
+  text-align: center;
+  line-height: 2rem;
+}
+
+[gameOver] a {
+  cursor: pointer;
+  background-color: dodgerblue;
+  padding: 3%;
+  border-radius: 10px;
+}
+
 .passaro {
   position: absolute;
   width: 60px;
