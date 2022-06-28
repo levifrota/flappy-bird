@@ -226,6 +226,9 @@ function FlappyBird(
                     const inferior = parDeBarreiras.inferior.elemento
                     colidiu = estaoSobrepostos(passaro.elemento, superior) || estaoSobrepostos(passaro.elemento, inferior)
                 } else {
+                    let alligatorSound = document.querySelector('[over]')
+                    alligatorSound.play()
+
                     const gameOver = document.querySelector('[gameOver]');
                     const playerScore = document.querySelector('[score]')
                     gameOver.style.display = 'flex'
