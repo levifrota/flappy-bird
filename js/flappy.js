@@ -72,16 +72,18 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
         new ParDeBarreiras(altura, abertura, largura + espaco * 3)
     ]
 
+    const deslocamento = 3
+
     this.animar = () => {
         this.pares.forEach(par => {
-            par.setX(par.getX() - velJogo)
+            par.setX(par.getX() - deslocamento)
 
             if (par.getX() < -par.getLargura()) {
                 par.setX(par.getX() + espaco * this.pares.length)
                 par.sortearAbertura()
             }
             const meio = largura / 2
-            const cruzouMeio = par.getX() + velJogo >= meio
+            const cruzouMeio = par.getX() + deslocamento >= meio
                 && par.getX() < meio
             if (cruzouMeio) {
                 notificarPonto()
@@ -147,12 +149,6 @@ setInterval(() => {
       passaro.animar() 
 },20) */
 
-function Name() {
-    this.elemento = novoElemento('span', 'nome')
-    this.elemento.innerHTML = nome  
-}
-
-
  function Progresso() {
 
     this.elemento = novoElemento('span', 'progresso')
@@ -181,8 +177,6 @@ barreiras.pares.forEach( par => areaDoJogo.appendChild(par.elemento))  */
     return horizontal && vertical
 }
 
-
-
 function FlappyBird(
     nome,
     color,
@@ -198,10 +192,11 @@ function FlappyBird(
     const areaDoJogo = document.querySelector('[wm-flappy]')
 
     if (color === 'night') {
-        areaDoJogo.style.backgroundColor = '#10111e';
+        areaDoJogo.style.backgroundImage = 'url(../img/night.png)';
     } else {
-        areaDoJogo.style.backgroundColor = 'deepskyblue';
+        areaDoJogo.style.backgroundImage = 'url(../img/day.png)';
     }
+    areaDoJogo.style.backgroundSize = 'contain'; 
 
     const altura = areaDoJogo.clientHeight
     const largura = areaDoJogo.clientWidth
@@ -244,7 +239,7 @@ function FlappyBird(
         }
         return colidiu
     }
-
+    console.log(velJogo)
 
     this.start = () => {
         const temporizador = setInterval(() => {
@@ -254,7 +249,7 @@ function FlappyBird(
               if(colidiu(passaro,barreiras)){
                  clearInterval(temporizador) 
              } 
-        }, 20)
+        }, velJogo)
     }
 }
  new FlappyBird(
