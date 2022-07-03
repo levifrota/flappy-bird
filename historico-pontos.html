@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opções do jogo</title>
+
+    <link rel="stylesheet" href="css/style-form.css" />
+  </head>
+  <body>
+    <div class="configuration">
+      <h1>Flappy Bird</h1>
+      <h2>Histórico de pontos</h2>
+
+      <div style="display: flex; justify-content: space-around">
+        <h3 history-name></h3>
+        <h3 history-points></h3>
+      </div>
+      <a
+        href="./formulario.html"
+        style="
+          align-self: center;
+          text-decoration: none;
+          color: #000;
+          background: deepskyblue;
+          padding: 3%;
+          border-radius: 30px;
+        "
+      >
+        Voltar ao formulário
+      </a>
+    </div>
+    <script src="./js/flappy.js"></script>
+    <script>
+      let pontosLocal = localStorage.getItem("pontos");
+      let nomeLocal = localStorage.getItem("nome");
+
+      const historyName = document.querySelector("[history-name]");
+      const historyPoints = document.querySelector("[history-points]");
+      historyName.innerText = nomeLocal;
+      historyPoints.innerText = pontosLocal;
+    </script>
+  </body>
+</html>

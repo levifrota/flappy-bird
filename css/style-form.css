@@ -20,10 +20,6 @@ body {
 h1 {
   align-self: center;
 }
-input.velocidade::before {
-  content: "(1 = alta e 10 = baixa)";
-  font-size: 10px;
-}
 
 .options {
   height: 100%;
